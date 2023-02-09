@@ -6,9 +6,9 @@
     <title>Web Speech API</title>
     <script>
         var flag_speech = 0;
+        const music = new Audio()
 
         function vr_function() {
-            const music = new Audio()
             window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
             var recognition = new webkitSpeechRecognition();
             recognition.lang = 'ja';
@@ -48,9 +48,10 @@
                             mode: 'cors',
                             body: formData
                         }).then(res => res.text()).then(text => {
-                            console.log(`musics/${text}.mp3`)
-                            music.src = `musics/${text}.mp3`
-                            music.start()
+                            console.log(`https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${text}.mp3`)
+                            music.pause()
+                            music.src = `https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${text}.mp3`
+                            music.play()
                         })
                         vr_function();
                     } else {
