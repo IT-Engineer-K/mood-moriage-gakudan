@@ -8,6 +8,7 @@
         var flag_speech = 0;
 
         function vr_function() {
+            const music = new Audio()
             window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
             var recognition = new webkitSpeechRecognition();
             recognition.lang = 'ja';
@@ -48,7 +49,8 @@
                             body: formData
                         }).then(res => res.text()).then(text => {
                             console.log(`musics/${text}.mp3`)
-                            new Audio(`musics/${text}.mp3`).start()
+                            music.src = `musics/${text}.mp3`
+                            music.start()
                         })
                         vr_function();
                     } else {
