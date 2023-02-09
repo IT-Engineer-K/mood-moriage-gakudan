@@ -48,7 +48,7 @@
                             body: formData
                         }).then(res => res.text()).then(text => {
                             console.log(text)
-                            new Audio('audio' + text).start()
+                            new Audio('musics/' + text).start()
                         })
                         vr_function();
                     } else {
