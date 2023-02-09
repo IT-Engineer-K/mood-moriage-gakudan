@@ -50,7 +50,7 @@
                         }).then(res => res.text()).then(text => {
                             console.log(`https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${text}.mp3`)
                             music.pause()
-                            music.src = `https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${text}.mp3`
+                            music.src = `musics/${text}.mp3`
                             music.play()
                         })
                         vr_function();
