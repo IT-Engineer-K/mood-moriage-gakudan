@@ -33,7 +33,7 @@ function vr_function() {
 
                 const formData = new FormData()
                 formData.append('text', request_text)
-                fetch('http://127.0.0.1:5000' /*'https://mudosheng-rishang-gele-tuan.onrender.com/'*/ , {
+                fetch('https://mudosheng-rishang-gele-tuan.onrender.com/', {
                     method: "POST",
                     mode: 'cors',
                     body: formData
