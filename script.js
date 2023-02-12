@@ -1,6 +1,10 @@
 var flag_speech = 0;
 const music = new Audio()
-const text_list = [];
+var text_list = [];
+const textToMusic = new TextToMusic();
+var previous_text = '';
+var recognize_history = []
+var requested_date = 0;
 
 function vr_function() {
     window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
@@ -28,36 +32,48 @@ function vr_function() {
     recognition.onresult = function(event) {
         var results = event.results;
         for (var i = event.resultIndex; i < results.length; i++) {
+            const res_text = results[i][0].transcript;
+            const new_text_list = text_list.concat(res_text);
+            document.getElementById('result_text').innerHTML = res_text;
             if (results[i].isFinal) {
-                const res_text = results[i][0].transcript
-                text_list.push(res_text)
-                if (text_list.length > 3)
-                    text_list.shift()
-                const request_text = text_list.join('\n')
-                console.log(request_text)
-                document.getElementById('result_text').innerHTML = res_text;
+                text_list = new_text_list;
 
-                const formData = new FormData()
-                formData.append('text', request_text)
-                fetch('https://musicapi.pythonanywhere.com/' /*'http://127.0.0.1:5000' 'https://mudosheng-rishang-gele-tuan.onrender.com/'*/ , {
-                    method: "POST",
-                    mode: 'cors',
-                    body: formData
-                }).then(res => res.text()).then(text => {
-                    text = encodeURI(text)
-                    const newUrl = `https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${text}.mp3`
-                    console.log(music.src, newUrl)
-                    if (music.src == newUrl)
-                        return
-                    music.pause()
-                    music.src = `https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${text}.mp3`
-                    music.play()
-                })
+                // 再生
+                textToMusic.PlaySound(text_list.join(', '));
+
+                recognize_history = []
                 vr_function();
             } else {
-                document.getElementById('result_text').innerHTML = results[i][0].transcript;
                 flag_speech = 1;
+                recognize_history.unshift(res_text)
+
+
+                const utc = Date.now()
+                console.log(utc - requested_date)
+
+                // 最後のリクエストから3秒以内だったら何もしない
+                if (utc - requested_date < 3000)
+                    break
+                requested_date = Date.now()
+
+
+
+                if (recognize_history.length > 10) {
+                    var new_text = '';
+                    for (let i = 0; i < recognize_history[0].length; i++) {
+                        if (i == recognize_history[10].length || recognize_history[0][i] != recognize_history[10][i])
+                            break
+                        new_text += recognize_history[0][i]
+                    }
+                    const request_text = new_text_list.join(', ');
+                    if (previous_text != request_text) {
+                        console.log(request_text);
+                        textToMusic.PlaySound(request_text);
+                        previous_text = request_text
+                    }
+                }
             }
+
         }
     }
     flag_speech = 0;
