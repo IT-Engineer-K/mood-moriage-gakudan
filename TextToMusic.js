@@ -11,8 +11,8 @@ class TextToMusic {
             const key = `https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${musics[i]}.mp3`
             this.audio[key] = new Audio()
             this.audio[key].src = key
-            this.audio[key].volume = 0
             this.audio[key].play()
+            this.audio[key].volume = 0
         }
     }
 
