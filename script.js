@@ -1,7 +1,7 @@
 var flag_speech = 0;
 const music = new Audio()
 var text_list = [];
-var textToMusic;
+const textToMusic = new TextToMusic();
 var previous_text = '';
 var recognize_history = []
 var requested_date = 0;
@@ -78,9 +78,4 @@ function vr_function() {
     }
     flag_speech = 0;
     recognition.start();
-}
-
-function start() {
-    textToMusic = new TextToMusic()
-    vr_function()
 }

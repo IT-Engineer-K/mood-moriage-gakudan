@@ -1,19 +1,11 @@
 class TextToMusic {
     constructor() {
         this.url = 'https://musicapi.pythonanywhere.com/'
+        this.url = 'http://127.0.0.1:5000'
         this.token = Math.random().toString(32).substring(2)
-        this.fadeSpeed = 1
         this.audio = {}
+        this.fadeSpeed = 1
         this.old_url
-
-        const musics = ['おとぼけダンス', '大混乱', 'Funny_Funny', '全力で逃げる時のBGM', 'トッカータとフーガ〜ギャグVer〜', 'シラけムードは少し気まずい', '修羅場_怒り心頭', 'おばけとかぼちゃのスープ', 'いちごホイップ', 'eye-catch', '夏の霧', '昼下がり気分', '冬の朝焼け', 'Happy_birthday', 'yonhonnorecorder', 'happytime', '夏休みの探検', 'Recollections', 'パステルハウス', 'なんでしょう？', 'Cat_life', '謹賀新年', 'ジングルベル']
-        for (let i = 0; i < musics.length; i++) {
-            const key = `https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${musics[i]}.mp3`
-            this.audio[key] = new Audio()
-            this.audio[key].src = key
-            this.audio[key].play()
-            this.audio[key].volume = 0
-        }
     }
 
     // audioの切り替え
@@ -24,9 +16,8 @@ class TextToMusic {
         }
         const audio = this.audio[name]
 
-        audio.currentTime = 0
         if (this.old_url == undefined) {
-            audio.volume = 1;
+            audio.play();
             return;
         }
 
@@ -36,9 +27,10 @@ class TextToMusic {
 
                 //音楽が完全に止まった時
                 if (stopAudio.volume <= (1 / 100)) {
-                    stopAudio.volume = 0;
+                    stopAudio.volume = 1;
+                    stopAudio.pause();
                     audio.currentTime = 0
-                    audio.volume = 1;
+                    audio.play();
                     clearInterval(end_func);
                 }
             },
