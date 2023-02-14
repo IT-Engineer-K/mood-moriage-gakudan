@@ -11,6 +11,7 @@ class TextToMusic {
             const key = `https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${musics[i]}.mp3`
             this.audio[key] = new Audio()
             this.audio[key].src = key
+            this.audio[key].volume = 0
             this.audio[key].play()
         }
     }
@@ -23,8 +24,9 @@ class TextToMusic {
         }
         const audio = this.audio[name]
 
+        audio.currentTime = 0
         if (this.old_url == undefined) {
-            audio.play();
+            audio.volume = 1;
             return;
         }
 
@@ -34,10 +36,9 @@ class TextToMusic {
 
                 //音楽が完全に止まった時
                 if (stopAudio.volume <= (1 / 100)) {
-                    stopAudio.volume = 1;
-                    stopAudio.pause();
+                    stopAudio.volume = 0;
                     audio.currentTime = 0
-                    audio.play();
+                    audio.volume = 1;
                     clearInterval(end_func);
                 }
             },
