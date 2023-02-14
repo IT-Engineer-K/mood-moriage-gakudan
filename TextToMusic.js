@@ -1,7 +1,7 @@
 class TextToMusic {
     constructor() {
-        this.url = 'https://musicapi.pythonanywhere.com/'
         this.url = 'http://127.0.0.1:5000'
+        this.url = 'https://musicapi.pythonanywhere.com/'
         this.token = Math.random().toString(32).substring(2)
         this.audio = {}
         this.fadeSpeed = 1
