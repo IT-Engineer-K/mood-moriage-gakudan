@@ -2,10 +2,17 @@ class TextToMusic {
     constructor() {
         this.url = 'https://musicapi.pythonanywhere.com/'
         this.token = Math.random().toString(32).substring(2)
-        this.audio = {}
         this.fadeSpeed = 1
+        this.audio = {}
         this.old_url
-        console.log(this.token)
+
+        const musics = ['おとぼけダンス', '大混乱', 'Funny_Funny', '全力で逃げる時のBGM', 'トッカータとフーガ〜ギャグVer〜', 'シラけムードは少し気まずい', '修羅場_怒り心頭', 'おばけとかぼちゃのスープ', 'いちごホイップ', 'eye-catch', '夏の霧', '昼下がり気分', '冬の朝焼け', 'Happy_birthday', 'yonhonnorecorder', 'happytime', '夏休みの探検', 'Recollections', 'パステルハウス', 'なんでしょう？', 'Cat_life', '謹賀新年', 'ジングルベル']
+        for (let i = 0; i < musics.length; i++) {
+            const key = `https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${musics[i]}.mp3`
+            this.audio[key] = new Audio()
+            this.audio[key].src = key
+            this.audio[key].play()
+        }
     }
 
     // audioの切り替え
