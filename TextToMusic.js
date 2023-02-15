@@ -43,10 +43,10 @@ class TextToMusic {
 
 
     PlaySound(text) {
-        if (text.length > 300)
-            text = text.slice(text.length - 100, text.length)
         text = text.replaceAll('\n', ', ')
-        console.log(text)
+        if (text.length > 100)
+            text = text.slice(text.length - 100, text.length)
+        console.log(text.length > 100, text)
 
         const formData = new FormData()
         formData.append('text', text)
