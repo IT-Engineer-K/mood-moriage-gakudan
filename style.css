@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+}
+
+#chat {
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+}
+
+#chat::-webkit-scrollbar {
+    width: 10px;
+}
+
+#chat::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+
+#draft {
+    resize: none;
+    max-height: 200px;
+    line-height: 40px;
+    font-size: 25px;
+    padding-right: 20px;
+    padding-left: 10px;
+    border: none;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
+    outline: none
+}
+
+#draft::placeholder {
+    color: #aaa;
+}
+
+.draft-holder {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    pointer-events: all;
+}
+
+.foreground {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.icon {
+    width: 30px;
+    height: auto;
+}
+
+.red-icon {
+    filter: drop-shadow(0 0 10px #F00);
+    color: #F00;
+}
+
+.icon-button {
+    border: none;
+    background: none;
+}
+
+.bottons {
+    position: absolute;
+}
+
+.comment {
+    padding: 10px 20px 10px 20px;
+    border-bottom: solid #ddd;
+}
+
+.comment:last-child {
+    margin-bottom: 100px;
+}
+
+.my-comment {
+    background-color: white;
+}

@@ -11,10 +11,14 @@ class TextToMusic {
     // audioの切り替え
     PlayAudio(name) {
         if (undefined == this.audio[name]) {
-            this.audio[name] = new Audio()
-            this.audio[name].src = name
+            this.audio[name] = new Audio();
+            this.audio[name].src = name;
         }
-        const audio = this.audio[name]
+        const audio = this.audio[name];
+        console.log(!audio.paused)
+        if (name == this.old_url && !audio.paused) {
+            return;
+        }
 
         if (this.old_url == undefined) {
             audio.play();
@@ -26,7 +30,7 @@ class TextToMusic {
                 stopAudio.volume -= .01;
 
                 //音楽が完全に止まった時
-                if (stopAudio.volume <= (1 / 100)) {
+                if (stopAudio.volume <= (.01)) {
                     stopAudio.volume = 1;
                     stopAudio.pause();
                     audio.currentTime = 0
@@ -39,8 +43,9 @@ class TextToMusic {
 
 
     PlaySound(text) {
-        if (text.length > 100)
+        if (text.length > 300)
             text = text.slice(text.length - 100, text.length)
+        text = text.replaceAll('\n', ', ')
         console.log(text)
 
         const formData = new FormData()
@@ -54,9 +59,6 @@ class TextToMusic {
             text = encodeURI(text)
             console.log(decodeURI(text))
             const newUrl = `https://it-engineer-k.github.io/mood-moriage-gakudan/musics/${text}.mp3`
-            if (music.src == newUrl)
-                return;
-            if (newUrl == this.old_url) return;
 
             this.PlayAudio(newUrl);
             this.old_url = newUrl;
