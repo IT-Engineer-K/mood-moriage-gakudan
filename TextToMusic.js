@@ -42,11 +42,12 @@ class TextToMusic {
     }
 
 
-    PlaySound(text) {
+    PlaySound(text, callback) {
         text = text.replaceAll('\n', ', ')
-        if (text.length > 100)
-            text = text.slice(text.length - 100, text.length)
-        console.log(text.length > 100, text)
+        const max_length = 50
+        if (text.length > max_length)
+            text = text.slice(text.length - max_length, text.length)
+        console.log(text.length > max_length, text)
 
         const formData = new FormData()
         formData.append('text', text)
@@ -62,6 +63,7 @@ class TextToMusic {
 
             this.PlayAudio(newUrl);
             this.old_url = newUrl;
+            callback(text);
         })
     }
 }

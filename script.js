@@ -2,6 +2,7 @@ var flag_speech = 0;
 const music = new Audio()
 var text_list = [];
 const textToMusic = new TextToMusic();
+const myAd = new AD();
 var previous_text = '';
 var recognize_history = []
 var requested_date = 0;
@@ -47,7 +48,13 @@ function shortcut(e) {
 draft.addEventListener('input', resizeDraft);
 draft.addEventListener('keypress', shortcut);
 
-
+function advertise(name) {
+    switch (name) {
+        case 'eye-catch':
+            myAd.train();
+            break;
+    }
+}
 
 function submit(text) {
     if (text == '')
@@ -64,7 +71,7 @@ function submit(text) {
     text_list.push(text);
 
     // 再生
-    textToMusic.PlaySound(text_list.join(', '));
+    textToMusic.PlaySound(text_list.join(', '), advertise);
 }
 
 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
@@ -116,26 +123,6 @@ function vr_function(start = false) {
                 if (utc - requested_date < 2000)
                     break
                 requested_date = Date.now()
-
-
-
-                if (false && recognize_history.length > 5) {
-                    var new_text = '';
-                    for (let i = 0; i < recognize_history[0].length; i++) {
-                        if (i == recognize_history[5].length || recognize_history[0][i] != recognize_history[5][i])
-                            break
-                        new_text += recognize_history[0][i]
-                    }
-
-                    if (new_text == '') break
-                    const request_text = text_list.concat(new_text).join(', ');
-                    if (request_text.length < 20)
-                        break
-                    if (previous_text != request_text) {
-                        textToMusic.PlaySound(request_text);
-                        previous_text = request_text
-                    }
-                }
             }
 
         }

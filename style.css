@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    overflow: hidden;
 }
 
 #chat {
@@ -83,4 +84,10 @@ body {
 
 .my-comment {
     background-color: white;
+}
+
+.ad-video-view {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
 }
