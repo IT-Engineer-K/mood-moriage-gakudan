@@ -2,7 +2,7 @@ var flag_speech = 0;
 const music = new Audio()
 var text_list = [];
 const textToMusic = new TextToMusic();
-const myAd = new AD();
+const effects = new Effects();
 var previous_text = '';
 var recognize_history = []
 var requested_date = 0;
@@ -48,10 +48,14 @@ function shortcut(e) {
 draft.addEventListener('input', resizeDraft);
 draft.addEventListener('keypress', shortcut);
 
-function advertise(name) {
-    switch (name) {
+function createEffect(name) {
+    switch (decodeURI(name)) {
         case 'eye-catch':
-            myAd.train();
+            effects.train();
+            break;
+
+        case '夏の霧':
+            effects.sad();
             break;
     }
 }
@@ -71,7 +75,7 @@ function submit(text) {
     text_list.push(text);
 
     // 再生
-    textToMusic.PlaySound(text_list.join(', '), advertise);
+    textToMusic.PlaySound(text_list.join(', '), createEffect);
 }
 
 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;

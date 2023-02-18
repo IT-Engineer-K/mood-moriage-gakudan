@@ -1,0 +1,55 @@
+@keyframes sad-animation {
+    from {
+        transform: translate(100vw);
+    }
+    to {
+        transform: translate(-300px);
+    }
+}
+
+.sad-effect {
+    margin-top: auto;
+    height: 300px;
+    width: 300px;
+    margin-bottom: 50px;
+    animation: sad-animation 20s forwards linear;
+}
+
+@keyframes sad-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.sad-effect-parent {
+    display: flex;
+    align-items: flex-end;
+}
+
+.sad-background-effect {
+    background-image: linear-gradient(99deg, #ffffff00 5px, #ffffff80 6px, #ffffff00 7px), linear-gradient(99deg, #ffffff00 5px, #ffffff80 6px, #ffffff00 7px), linear-gradient(99deg, #ffffff00 5px, #ffffff80 6px, #ffffff00 7px), linear-gradient(#020070, #3737a9, #8b8ad6);
+    background-size: 114px 180px, 114px 180px, 114px 180px, 100% 100%;
+    animation: rain 1.5s linear infinite, sad-fade-in 3s forwards;
+}
+
+@keyframes rain {
+    0% {
+        background-position: 0px 0px, 100px 40px, 57px 57px, 0px 0px;
+    }
+    100% {
+        background-position: -114px 720px, -14px 760px, -57px 777px, 0px 0px;
+    }
+}
+
+@keyframes sad-fadeout {
+    to {
+        opacity: 0;
+    }
+}
+
+.sad-effect-fadeout {
+    animation: rain 1.5s linear infinite, sad-fade-in 3s forwards, sad-fadeout 3s forwards linear;
+}

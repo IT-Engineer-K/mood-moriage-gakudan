@@ -1,0 +1,23 @@
+@keyframes train-animation {
+    0% {
+        animation-timing-function: ease-out;
+        transform: translate(100vw);
+    }
+    50% {
+        transform: translate(20vw);
+    }
+    57% {
+        animation-timing-function: ease-in;
+        transform: translate(20vw);
+    }
+    100% {
+        animation-timing-function: linear;
+        transform: translate(-825px);
+    }
+}
+
+.train-effect {
+    height: 300px;
+    width: 825px;
+    animation: train-animation 20s forwards;
+}

@@ -5,16 +5,22 @@
     <meta charset="UTF-8">
     <title>ムード盛り上げシステム</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="ad\train\style.css">
+    <link rel="stylesheet" href="effects/train/style.css">
+    <link rel="stylesheet" href="effects/sad/style.css">
     <script type="text/javascript" src="TextToMusic.js">
     </script>
 </head>
 
 <body>
-    <div class="ad-video-view">
-        <a><img id="ad-effect" usemap="#map"><map name="map">
-            <area  id="ad-click" shape="rect" coords="0,150,825,300" href="url">
-          </map>
+    <div id="background">
+    </div>
+    <div class="effects-video-view" id="effects-video-view">
+        <a>
+            <video id="video-effects" autoplay loop muted></video>
+            <img id="image-effects">
+            <map name="map">
+                <area  id="effects-click" shape="rect" coords="0,150,825,300">
+            </map>
         </a>
     </div>
     <div class="foreground">
@@ -27,7 +33,7 @@
         </div>
     </div>
     <div id="chat"></div>
-    <script type="text/javascript" src="ad/script.js">
+    <script type="text/javascript" src="effects/script.js">
     </script>
     <script type="text/javascript" src="script.js">
     </script>

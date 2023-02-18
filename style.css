@@ -48,10 +48,10 @@ body {
 .foreground {
     height: 100%;
     width: 100%;
-    position: absolute;
     display: flex;
     align-items: flex-end;
     pointer-events: none;
+    position: absolute;
 }
 
 .icon {
@@ -74,6 +74,8 @@ body {
 }
 
 .comment {
+    font-size: large;
+    text-shadow: 0 0 1px white;
     padding: 10px 20px 10px 20px;
     border-bottom: solid #ddd;
 }
@@ -83,11 +85,25 @@ body {
 }
 
 .my-comment {
-    background-color: white;
+    background-color: #0000;
 }
 
-.ad-video-view {
+.effects-video-view {
     width: 100vw;
     height: 100vh;
     position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-end;
+}
+
+a {
+    pointer-events: all;
+}
+
+#background {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
 }
