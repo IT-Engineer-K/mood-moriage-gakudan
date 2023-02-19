@@ -136,6 +136,7 @@ button.examples:hover {
 .item {
     display: block;
     width: 100%;
+    list-style: none;
 }
 
 .item:first-child {
