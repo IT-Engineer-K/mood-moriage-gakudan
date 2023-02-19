@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="effects/sad/style.css">
     <script type="text/javascript" src="TextToMusic.js">
     </script>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
 </head>
 
 <body>
@@ -34,23 +35,35 @@
     </div>
     <div id="chat">
         <div id="notes">
-            <h1>ムード盛り上げシステムへようこそ!!</h1>
-            <p>■録音及び送信ボタンをクリックすると、利用規約に同意したことになります</p>
-            <a href="page/rule.html">利用規約</a>
-            <a href="page/privacy.html">プライバシーポリシー</a>
-            <p>■怖い曲や悲しい曲が流れる場合がありますので、ご注意ください。</p>
-            <p>■音量にご注意ください。</p>
-            <p>■以下は入力の一例です</p>
-            <button class="examples" onclick="draft.value='水溜りボンドの音楽流して';resizeDraft()">水溜りボンドの音楽流して➡</button>
-            <br>
-            <button class="examples" onclick="draft.value='布団が吹っ飛んだ';resizeDraft()">　　布団が吹っ飛んだ➡　　</button>
-            <br>
-            <button class="examples" onclick="draft.value='お誕生日おめでとう！';resizeDraft()">　お誕生日おめでとう！➡　</button>
+            <div class="title">
+                <img src="img/favicon.png" alt="" width="60px" height="60px">
+                <h1>ムード盛り上げシステム</h1>
+            </div>
+            <ul class="menu">
+                <li class="item">
+                    <img src="img/info.svg" class="icon" alt="">
+                    <h2>例文</h2>
+                    <button class="examples" onclick="draft.value='水溜りボンドの音楽流して' ;resizeDraft() ">「水溜りボンドの音楽流して」➡</button>
+                    <br>
+                    <button class="examples" onclick="draft.value='布団が吹っ飛んだ' ;resizeDraft() ">「布団が吹っ飛んだ」➡</button>
+                    <br>
+                    <button class="examples" onclick="draft.value='お誕生日おめでとう！' ;resizeDraft() ">「お誕生日おめでとう！」➡</button>
+                </li>
+                <li class="item">
+                    <img src="img/note.svg" class="icon" alt="">
+                    <h2>注意</h2>
+                    <p class="examples">録音または送信ボタンをクリックすると、利用規約に同意したことになります<br>
+                        <a href="page/rule.html">利用規約</a>
+                        <a href="page/privacy.html">プライバシーポリシー</a>
+                    </p>
+                    <p class="examples">怖い曲や悲しい曲が流れる場合がありますので、ご注意ください。</p>
+                </li>
+            </ul>
         </div>
     </div>
-    <script type="text/javascript" src="effects/script.js">
+    <script type="text/javascript " src="effects/script.js ">
     </script>
-    <script type="text/javascript" src="script.js">
+    <script type="text/javascript " src="script.js ">
     </script>
 </body>
 

@@ -35,13 +35,20 @@ resizeDraft();
 draft.focus();
 draft.select();
 
+
 // ショートカット
 function shortcut(e) {
-    if (e.keyCode == 10) {
-        submit(draft.value);
+    console.log(e.keyCode)
+    if (e.key == 'Enter') {
+        if (draft.value != '')
+            submit(draft.value);
         draft.value = '';
         submitButton.style.display = 'none';
         recordButton.style.display = 'inline';
+        resizeDraft();
+        e.preventDefault()
+    } else if (e.keyCode == 10) {
+        draft.value += '\n'
         resizeDraft();
     }
 }
