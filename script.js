@@ -49,15 +49,31 @@ draft.addEventListener('input', resizeDraft);
 draft.addEventListener('keypress', shortcut);
 
 function createEffect(name) {
-    switch (decodeURI(name)) {
+    name = decodeURI(name)
+    switch (name) {
         case 'eye-catch':
             effects.train();
             break;
-
+        case 'Cat_life':
+            effects.train();
+            break;
         case '夏の霧':
             effects.sad();
             break;
+        case 'yonhonnorecorder':
+            effects.train();
+            break;
+            musics = [
+                'おとぼけダンス', '大混乱', 'Funny_Funny', '全力で逃げる時のBGM', 'トッカータとフーガ〜ギャグVer〜', 'シラけムードは少し気まずい',
+                '修羅場_怒り心頭', 'おばけとかぼちゃのスープ', 'いちごホイップ', '昼下がり気分', '冬の朝焼け',
+                'Happy_birthday', 'happytime', '夏休みの探検', 'Recollections', 'パステルハウス',
+                'なんでしょう？', '謹賀新年', 'ジングルベル'
+            ]
     }
+    if (effects.sad_is_running && name != '夏の霧')
+        effects.sad(exit = true);
+    else if (effects.train_is_running && !['eye-catch', 'yonhonnorecorder', 'Cat_life'].includes(name))
+        effects.train(exit = true);
 }
 
 function submit(text) {
@@ -101,7 +117,14 @@ function vr_function(start = false) {
     recognition.onsoundend = function() {
         console.log("停止中");
         if (recognizing)
-            vr_function();
+            var request_function = setInterval(() => {
+                try {
+                    vr_function(true);
+                    clearInterval(request_function)
+                } catch (e) {
+                    recognition.stop();
+                }
+            }, 100)
     };
 
     recognition.onresult = function(event) {

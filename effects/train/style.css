@@ -19,5 +19,23 @@
 .train-effect {
     height: 300px;
     width: 825px;
-    animation: train-animation 20s forwards;
+    animation-name: train-animation;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    margin-bottom: 60px;
+}
+
+@keyframes train-speedup {
+    to {
+        transform: translate(-825px);
+    }
+}
+
+.train-speedup {
+    height: 300px;
+    width: 825px;
+    animation-name: train-speedup;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
 }

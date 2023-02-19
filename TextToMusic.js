@@ -1,10 +1,10 @@
 class TextToMusic {
     constructor() {
-        this.url = 'https://musicapi.pythonanywhere.com/'
-        this.token = Math.random().toString(32).substring(2)
-        this.audio = {}
-        this.fadeSpeed = 1
-        this.old_url
+        this.url = 'https://musicapi.pythonanywhere.com/';
+        this.token = Math.random().toString(32).substring(2);
+        this.audio = {};
+        this.fadeSpeed = 1;
+        this.old_url;
     }
 
     // audioの切り替え
