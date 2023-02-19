@@ -32,7 +32,22 @@
             <textarea id="draft" placeholder="ここに入力"></textarea>
         </div>
     </div>
-    <div id="chat"></div>
+    <div id="chat">
+        <div id="notes">
+            <h1>ムード盛り上げシステムへようこそ!!</h1>
+            <p>■録音及び送信ボタンをクリックすると、利用規約に同意したことになります</p>
+            <a href="page/rule.html">利用規約</a>
+            <a href="page/privacy.html">プライバシーポリシー</a>
+            <p>■怖い曲や悲しい曲が流れる場合がありますので、ご注意ください。</p>
+            <p>■音量にご注意ください。</p>
+            <p>■以下は入力の一例です</p>
+            <button class="examples" onclick="draft.value='水溜りボンドの音楽流して';resizeDraft()">水溜りボンドの音楽流して➡</button>
+            <br>
+            <button class="examples" onclick="draft.value='布団が吹っ飛んだ';resizeDraft()">　　布団が吹っ飛んだ➡　　</button>
+            <br>
+            <button class="examples" onclick="draft.value='お誕生日おめでとう！';resizeDraft()">　お誕生日おめでとう！➡　</button>
+        </div>
+    </div>
     <script type="text/javascript" src="effects/script.js">
     </script>
     <script type="text/javascript" src="script.js">

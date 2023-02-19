@@ -10,6 +10,7 @@ const chat = document.getElementById('chat');
 const draft = document.getElementById('draft');
 const submitButton = document.getElementById('submit')
 const recordButton = document.getElementById('record')
+const notes = document.getElementById('notes')
 const recordIcon = document.getElementById('record_icon')
 let recognizing = false
 
@@ -77,6 +78,7 @@ function createEffect(name) {
 }
 
 function submit(text) {
+    notes.remove()
     if (text == '')
         return
 
